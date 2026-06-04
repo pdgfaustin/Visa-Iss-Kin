@@ -3,7 +3,6 @@ package com.visa_iss_kin.controller;
 
 import com.visa_iss_kin.model.Inscription;
 import com.visa_iss_kin.service.InscriptionService;
-import com.visa_iss_kin.serviceImpl.InscriptionServiceImpl;
 import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
