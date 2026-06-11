@@ -1,0 +1,35 @@
+[33mcommit 71ec75d95149de1bfbfc15e43b84c8b103edf2db[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mdev[m[33m, [m[1;31morigin/dev[m[33m)[m
+Author: Faustin Flory <pdgfaustin@gmail.com>
+Date:   Thu Jun 11 16:49:21 2026 +0100
+
+    Les routes sur les banques créées et testées
+
+[33mcommit 8e93813f0451af40ef994833944f26cc05b80d64[m
+Author: Faustin Flory <pdgfaustin@gmail.com>
+Date:   Thu Jun 11 15:48:07 2026 +0100
+
+    Association du frais à la promotion par année académique
+
+[33mcommit 97c5c3d0fd28ee577d2d8142b1860afc17810c43[m
+Author: Faustin Flory <pdgfaustin@gmail.com>
+Date:   Thu Jun 4 12:58:05 2026 +0100
+
+    Frais académiques créé, tester et valider
+
+[33mcommit fb6fc4f43a9c264b40c9c6eee7e0ddef1f65be6c[m
+Author: Faustin Flory <pdgfaustin@gmail.com>
+Date:   Wed Jun 3 16:45:50 2026 +0100
+
+    Etape Inscription testée et validé
+
+[33mcommit 823a31c7c39e6c88aad536294e3a4c3db5a7b1f4[m[33m ([m[1;32mmain[m[33m)[m
+Author: Faustin Flory <pdgfaustin@gmail.com>
+Date:   Wed Jun 3 13:14:43 2026 +0100
+
+    Inscription Repository
+
+[33mcommit 6ee75b7ac30b2e521cbb6b1d328d7a59e652c5aa[m
+Author: pdgfaustin <pdgfaustin@gmail.com>
+Date:   Wed Jun 3 12:18:08 2026 +0100
+
+    First Commit for visa - iss - kin
