@@ -7,9 +7,12 @@ import com.visa_iss_kin.model.Inscription;
 import com.visa_iss_kin.model.NumeroCompte;
 import com.visa_iss_kin.model.PaiementFrais;
 import com.visa_iss_kin.model.StatutPaiement;
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 /**
  *
@@ -40,5 +43,19 @@ public interface PaiementFraisRepository extends JpaRepository<PaiementFrais, Lo
     List<PaiementFrais> findByInscriptionAndStatutPaiement(
             Inscription inscription,
             StatutPaiement statutPaiement
+    );
+    @Query("""
+       SELECT COALESCE(SUM(p.montantPaye), 0)
+       FROM PaiementFrais p
+       WHERE p.inscription = :inscription
+       AND p.associationFrais = :associationFrais
+       AND p.statutPaiement IN (
+            com.visa_iss_kin.model.StatutPaiement.EN_ATTENTE,
+            com.visa_iss_kin.model.StatutPaiement.VALIDE
+       )
+       """)
+    BigDecimal calculerTotalPayeParInscriptionEtFrais(
+            @Param("inscription") Inscription inscription,
+            @Param("associationFrais") AssocierFraisALaPromotion associationFrais
     );
 }
