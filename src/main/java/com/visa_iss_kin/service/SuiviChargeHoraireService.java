@@ -1,5 +1,6 @@
-package com.visa_iss_kin.model;
+package com.visa_iss_kin.service;
 
+import com.visa_iss_kin.model.SuiviChargeHoraire;
 import java.util.List;
 
 /**

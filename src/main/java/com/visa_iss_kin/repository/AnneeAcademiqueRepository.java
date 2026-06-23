@@ -13,4 +13,5 @@ public interface AnneeAcademiqueRepository extends JpaRepository<AnneeAcademique
     List<AnneeAcademique> findByStatutAnneeAcademique(StatutAnneeAcademique statutAnnee);
 
     boolean existsByStatutAnneeAcademique(StatutAnneeAcademique statutAnnee);
+    boolean existsById(String idAA);
 }

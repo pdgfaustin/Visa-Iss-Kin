@@ -1,7 +1,7 @@
 package com.visa_iss_kin.serviceImpl;
 
 import com.visa_iss_kin.model.*;
-import com.visa_iss_kin.model.SuiviChargeHoraireService;
+import com.visa_iss_kin.service.SuiviChargeHoraireService;
 import com.visa_iss_kin.repository.*;
 import java.time.Duration;
 import java.util.List;
