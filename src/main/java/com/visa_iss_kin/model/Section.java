@@ -13,6 +13,7 @@ import java.time.LocalDate;
  */
 @lombok.Getter
 @lombok.Setter
+@lombok.ToString
 @Entity
 @Table(name="Section")
 public class Section {
