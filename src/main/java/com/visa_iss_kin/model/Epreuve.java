@@ -75,4 +75,22 @@ public class Epreuve {
 
     public Epreuve() {
     }
+    @PrePersist
+    public void prePersist() {
+        if (createdAt == null) {
+            createdAt = LocalDateTime.now();
+        }
+
+        if (ouverte == null) {
+            ouverte = false;
+        }
+
+        if (ponderation == null) {
+            ponderation = 1.0;
+        }
+
+        if (noteMaximale == null) {
+            noteMaximale = 20.0;
+        }
+    }
 }
