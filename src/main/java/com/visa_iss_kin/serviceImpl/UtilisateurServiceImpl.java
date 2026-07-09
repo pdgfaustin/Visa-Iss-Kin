@@ -7,6 +7,7 @@ import com.visa_iss_kin.service.UtilisateurService;
 import java.time.LocalDateTime;
 import java.util.List;
 import org.springframework.stereotype.Service;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 /**
  *
@@ -15,11 +16,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class UtilisateurServiceImpl implements UtilisateurService {
     private final UtilisateurRepository utilisateurRepository;
-
+    private final PasswordEncoder passwordEncoder;
     public UtilisateurServiceImpl(
-            UtilisateurRepository utilisateurRepository
+            UtilisateurRepository utilisateurRepository,
+            PasswordEncoder passwordEncoder
     ) {
         this.utilisateurRepository = utilisateurRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
@@ -66,7 +69,7 @@ public class UtilisateurServiceImpl implements UtilisateurService {
         }
 
         utilisateur.setPassword(
-                utilisateur.getPassword().trim()
+                passwordEncoder.encode(utilisateur.getPassword().trim())
         );
 
         utilisateur.setDateCreation(LocalDateTime.now());
@@ -276,10 +279,12 @@ public class UtilisateurServiceImpl implements UtilisateurService {
         Utilisateur utilisateur =
                 rechercherUtilisateurParUserName(userName);
 
-        if (ancienMotDePasse == null
-                || ancienMotDePasse.trim().isEmpty()) {
+        if (!passwordEncoder.matches(
+                ancienMotDePasse.trim(),
+                utilisateur.getPassword()
+        )) {
             throw new RuntimeException(
-                    "L'ancien mot de passe est obligatoire."
+                    "L'ancien mot de passe est incorrect."
             );
         }
 
@@ -291,7 +296,11 @@ public class UtilisateurServiceImpl implements UtilisateurService {
 
         verifierNouveauMotDePasse(nouveauMotDePasse);
 
-        utilisateur.setPassword(nouveauMotDePasse.trim());
+        utilisateur.setPassword(
+                passwordEncoder.encode(
+                        nouveauMotDePasse.trim()
+                )
+        );
         utilisateur.setPremiereConnexion(false);
 
         return utilisateurRepository.save(utilisateur);
@@ -307,7 +316,11 @@ public class UtilisateurServiceImpl implements UtilisateurService {
 
         verifierNouveauMotDePasse(nouveauMotDePasse);
 
-        utilisateur.setPassword(nouveauMotDePasse.trim());
+        utilisateur.setPassword(
+                passwordEncoder.encode(
+                        nouveauMotDePasse.trim()
+                )
+        );
         utilisateur.setPremiereConnexion(true);
         utilisateur.setCompteVerrouille(false);
 
